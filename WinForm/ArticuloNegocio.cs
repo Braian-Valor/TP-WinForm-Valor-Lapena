@@ -18,7 +18,7 @@ namespace WinForm {
             try {
                 conexion.ConnectionString = "server=.\\SQLEXPRESS; database=CATALOGO_DB; integrated security=true";
                 comando.CommandType = System.Data.CommandType.Text;
-                comando.CommandText = "select Codigo, Nombre, Descripcion from Articulos";
+                comando.CommandText = "select Codigo, Nombre, Descripcion, ImagenUrl from Articulos";
                 comando.Connection = conexion;
 
                 conexion.Open();
@@ -30,6 +30,7 @@ namespace WinForm {
                     aux.Codigo = (string)lector["Codigo"];
                     aux.Nombre = (string)lector["Nombre"];
                     aux.Descripcion = (string)lector["Descripcion"];
+                    aux.ImagenUrl = (string)lector["ImagenUrl"];
 
                     lista.Add(aux);
                 }
