@@ -9,9 +9,14 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace WinForm {
-    public partial class Form1 : Form {
-        public Form1() {
+    public partial class frmArticulos : Form {
+        public frmArticulos() {
             InitializeComponent();
+        }
+
+        private void frmArticulos_Load(object sender, EventArgs e) {
+            ArticuloNegocio negocio = new ArticuloNegocio();
+            dgvArticulos.DataSource = negocio.listar();
         }
     }
 }

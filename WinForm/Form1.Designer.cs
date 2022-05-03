@@ -1,6 +1,6 @@
 ﻿
 namespace WinForm {
-    partial class Form1 {
+    partial class frmArticulos {
         /// <summary>
         /// Variable del diseñador necesaria.
         /// </summary>
@@ -24,21 +24,36 @@ namespace WinForm {
         /// el contenido de este método con el editor de código.
         /// </summary>
         private void InitializeComponent() {
+            this.dgvArticulos = new System.Windows.Forms.DataGridView();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvArticulos)).BeginInit();
             this.SuspendLayout();
             // 
-            // Form1
+            // dgvArticulos
+            // 
+            this.dgvArticulos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvArticulos.Location = new System.Drawing.Point(33, 90);
+            this.dgvArticulos.Name = "dgvArticulos";
+            this.dgvArticulos.Size = new System.Drawing.Size(357, 166);
+            this.dgvArticulos.TabIndex = 0;
+            // 
+            // frmArticulos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(537, 459);
-            this.Name = "Form1";
+            this.Controls.Add(this.dgvArticulos);
+            this.Name = "frmArticulos";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Form1";
+            this.Text = "TP Windows Form";
+            this.Load += new System.EventHandler(this.frmArticulos_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.dgvArticulos)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
+
+        private System.Windows.Forms.DataGridView dgvArticulos;
     }
 }
 
