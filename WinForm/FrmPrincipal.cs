@@ -19,6 +19,7 @@ namespace WinForm {
             ArticuloNegocio negocio = new ArticuloNegocio();
             listaArticulo = negocio.listar();
             dgvArticulos.DataSource = listaArticulo;
+            dgvArticulos.Columns["ImagenUrl"].Visible = false;
             cargarImagen(listaArticulo[0].ImagenUrl);
         }
 
