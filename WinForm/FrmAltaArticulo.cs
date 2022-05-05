@@ -28,10 +28,25 @@ namespace WinForm {
                 nuevoArticulo.Codigo = tboxCodigo.Text;
                 nuevoArticulo.Nombre = tboxNombre.Text;
                 nuevoArticulo.Descripcion = tboxDescripcion.Text;
+                nuevoArticulo.Marca = (Marca)cboxMarca.SelectedItem;
+                nuevoArticulo.Categoria = (Categoria)cboxCategoria.SelectedItem;
 
                 negocio.agregar(nuevoArticulo);
                 MessageBox.Show("Articulo agregado");
                 Close();
+            }
+            catch (Exception ex) {
+                MessageBox.Show(ex.ToString());
+            }
+        }
+
+        private void FrmAltaArticulo_Load(object sender, EventArgs e) {
+            MarcaNegocio marcaNegocio = new MarcaNegocio();
+            CategoriaNegocio categoriaNegocio = new CategoriaNegocio();
+
+            try {
+                cboxMarca.DataSource = marcaNegocio.listar();
+                cboxCategoria.DataSource = categoriaNegocio.listar();
             }
             catch (Exception ex) {
                 MessageBox.Show(ex.ToString());
