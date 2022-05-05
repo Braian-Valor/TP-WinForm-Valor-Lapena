@@ -38,5 +38,10 @@ namespace WinForm {
                 pbxArticulo.Load("https://uning.es/wp-content/uploads/2016/08/ef3-placeholder-image.jpg");
             }
         }
+
+        private void btnAgregar_Click(object sender, EventArgs e) {
+            FrmAltaArticulo alta = new FrmAltaArticulo();
+            alta.ShowDialog();
+        }
     }
 }
