@@ -53,5 +53,9 @@ namespace negocio {
             conexion.Close();
         }
 
+        public void setearParametro(string nombre, object value) {
+            comando.Parameters.AddWithValue(nombre, value);
+        }
+
     }
 }

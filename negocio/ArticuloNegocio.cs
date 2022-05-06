@@ -52,7 +52,9 @@ namespace negocio {
             AccesoDatos datos = new AccesoDatos();
 
             try {
-                datos.setearConsulta("insert into ARTICULOS (Codigo, Nombre, Descripcion) values ('" + nuevoArticulo.Codigo + "', '" + nuevoArticulo.Nombre + "', '" + nuevoArticulo.Descripcion + "')");
+                datos.setearConsulta("insert into ARTICULOS (Codigo, Nombre, Descripcion, IdMarca, IdCategoria) values ('" + nuevoArticulo.Codigo + "', '" + nuevoArticulo.Nombre + "', '" + nuevoArticulo.Descripcion + "', @IdMarca, @IdCategoria)");
+                datos.setearParametro("@IdMarca", nuevoArticulo.Marca.Id);
+                datos.setearParametro("@IdCategoria", nuevoArticulo.Categoria.Id);
                 datos.ejecutarAccion();
             }
             catch (Exception ex) {
