@@ -19,10 +19,15 @@ namespace WinForm {
 
         private void frmArticulos_Load(object sender, EventArgs e) {
             ArticuloNegocio negocio = new ArticuloNegocio();
-            listaArticulo = negocio.listar();
-            dgvArticulos.DataSource = listaArticulo;
-            dgvArticulos.Columns["ImagenUrl"].Visible = false;
-            cargarImagen(listaArticulo[0].ImagenUrl);
+            try {
+                listaArticulo = negocio.listar();
+                dgvArticulos.DataSource = listaArticulo;
+                dgvArticulos.Columns["ImagenUrl"].Visible = false;
+                cargarImagen(listaArticulo[0].ImagenUrl);
+            }
+            catch (Exception ex) {
+                MessageBox.Show(ex.ToString());
+            }
         }
 
         private void dgvArticulos_SelectionChanged(object sender, EventArgs e) {

@@ -28,14 +28,20 @@ namespace negocio {
                 while (lector.Read()) {
                     Articulo aux = new Articulo();
 
-                    aux.Codigo = (string)lector["Codigo"];
-                    aux.Nombre = (string)lector["Nombre"];
-                    aux.Descripcion = (string)lector["Descripcion"];
-                    aux.ImagenUrl = (string)lector["ImagenUrl"];
-                    aux.Marca = new Marca();
-                    aux.Marca.Descripcion = (string)lector["Marca"];
-                    aux.Categoria = new Categoria();
-                    aux.Categoria.Descripcion = (string)lector["Categoria"];
+                    if (!(lector["Codigo"] is DBNull))
+                        aux.Codigo = (string)lector["Codigo"];
+                    if (!(lector["Nombre"] is DBNull))
+                        aux.Nombre = (string)lector["Nombre"];
+                    if (!(lector["Descripcion"] is DBNull))
+                        aux.Descripcion = (string)lector["Descripcion"];
+                    if (!(lector["ImagenUrl"] is DBNull))
+                        aux.ImagenUrl = (string)lector["ImagenUrl"];
+                    if (!(lector["Marca"] is DBNull))
+                        aux.Marca = new Marca();
+                        aux.Marca.Descripcion = (string)lector["Marca"];
+                    if (!(lector["Categoria"] is DBNull))
+                        aux.Categoria = new Categoria();
+                        aux.Categoria.Descripcion = (string)lector["Categoria"];
 
                     lista.Add(aux);
                 }
