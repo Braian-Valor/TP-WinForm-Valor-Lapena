@@ -18,6 +18,10 @@ namespace WinForm {
         }
 
         private void frmArticulos_Load(object sender, EventArgs e) {
+            cargar();
+        }
+
+        private void cargar() {
             ArticuloNegocio negocio = new ArticuloNegocio();
             try {
                 listaArticulo = negocio.listar();
@@ -47,6 +51,7 @@ namespace WinForm {
         private void btnAgregar_Click(object sender, EventArgs e) {
             FrmAltaArticulo alta = new FrmAltaArticulo();
             alta.ShowDialog();
+            cargar();
         }
     }
 }
