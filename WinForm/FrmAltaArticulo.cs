@@ -28,6 +28,7 @@ namespace WinForm {
                 nuevoArticulo.Codigo = tboxCodigo.Text;
                 nuevoArticulo.Nombre = tboxNombre.Text;
                 nuevoArticulo.Descripcion = tboxDescripcion.Text;
+                nuevoArticulo.ImagenUrl = tboxImagenUrl.Text;
                 nuevoArticulo.Marca = (Marca)cboxMarca.SelectedItem;
                 nuevoArticulo.Categoria = (Categoria)cboxCategoria.SelectedItem;
 
@@ -50,6 +51,19 @@ namespace WinForm {
             }
             catch (Exception ex) {
                 MessageBox.Show(ex.ToString());
+            }
+        }
+
+        private void tboxImagenUrl_Leave(object sender, EventArgs e) {
+            cargarImagen(tboxImagenUrl.Text);
+        }
+
+        private void cargarImagen(string imagen) {
+            try {
+                pbxAltaArticulo.Load(imagen);
+            }
+            catch (Exception) {
+                pbxAltaArticulo.Load("https://uning.es/wp-content/uploads/2016/08/ef3-placeholder-image.jpg");
             }
         }
     }
