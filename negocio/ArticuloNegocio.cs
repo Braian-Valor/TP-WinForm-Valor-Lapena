@@ -19,7 +19,7 @@ namespace negocio {
             try {
                 conexion.ConnectionString = "server=.\\SQLEXPRESS; database=CATALOGO_DB; integrated security=true";
                 comando.CommandType = System.Data.CommandType.Text;
-                comando.CommandText = "select Codigo, Nombre, A.Descripcion, ImagenUrl, M.Descripcion Marca, C.Descripcion Categoria from Articulos A, MARCAS M, CATEGORIAS C where A.IdMarca = M.Id and A.IdCategoria = C.Id";
+                comando.CommandText = "select A.Id Id, Codigo, Nombre, A.Descripcion, ImagenUrl, M.Descripcion Marca, C.Descripcion Categoria, M.Id IdMarca, C.Id IdCategoria from Articulos A, MARCAS M, CATEGORIAS C where A.IdMarca = M.Id and A.IdCategoria = C.Id";
                 comando.Connection = conexion;
 
                 conexion.Open();
@@ -28,6 +28,7 @@ namespace negocio {
                 while (lector.Read()) {
                     Articulo aux = new Articulo();
 
+                    aux.Id = (int)lector["Id"];
                     if (!(lector["Codigo"] is DBNull))
                         aux.Codigo = (string)lector["Codigo"];
                     if (!(lector["Nombre"] is DBNull))
@@ -36,12 +37,16 @@ namespace negocio {
                         aux.Descripcion = (string)lector["Descripcion"];
                     if (!(lector["ImagenUrl"] is DBNull))
                         aux.ImagenUrl = (string)lector["ImagenUrl"];
-                    if (!(lector["Marca"] is DBNull))
+                    if (!(lector["Marca"] is DBNull)) {
                         aux.Marca = new Marca();
+                        aux.Marca.Id = (int)lector["IdMarca"];
                         aux.Marca.Descripcion = (string)lector["Marca"];
-                    if (!(lector["Categoria"] is DBNull))
+                    }
+                    if (!(lector["Categoria"] is DBNull)) {
                         aux.Categoria = new Categoria();
+                        aux.Categoria.Id = (int)lector["IdCategoria"];
                         aux.Categoria.Descripcion = (string)lector["Categoria"];
+                    }
 
                     lista.Add(aux);
                 }
@@ -69,6 +74,27 @@ namespace negocio {
             }
             finally {
                 datos.cerrarConexion();
+            }
+        }
+
+        public void modificar(Articulo articulo) {
+            AccesoDatos datos = new AccesoDatos();
+            try {
+                datos.setearConsulta("update ARTICULOS set Codigo = @Codigo, Nombre = @Nombre, Descripcion = @Descripcion, IdMarca = @IdMarca, IdCategoria = @IdCategoria, ImagenUrl = @ImagenUrl where Id = @Id");
+                datos.setearParametro("@Codigo", articulo.Codigo);
+                datos.setearParametro("@Nombre", articulo.Nombre);
+                datos.setearParametro("@Descripcion", articulo.Descripcion);
+                datos.setearParametro("@IdMarca", articulo.Marca.Id);
+                datos.setearParametro("@IdCategoria", articulo.Categoria.Id);
+                datos.setearParametro("@ImagenUrl", articulo.ImagenUrl);
+                datos.setearParametro("@Id", articulo.Id);
+                datos.ejecutarAccion();
+            }
+            catch (Exception ex) {
+                throw ex;
+            }
+            finally {
+
             }
         }
     }

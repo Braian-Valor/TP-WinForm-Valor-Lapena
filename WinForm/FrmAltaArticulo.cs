@@ -12,8 +12,14 @@ using negocio;
 
 namespace WinForm {
     public partial class FrmAltaArticulo : Form {
+        private Articulo articulo = null;
         public FrmAltaArticulo() {
             InitializeComponent();
+        }
+
+        public FrmAltaArticulo(Articulo articuloSeleccionado) {
+            InitializeComponent();
+            articulo = articuloSeleccionado;
         }
 
         private void btnCancelar_Click(object sender, EventArgs e) {
@@ -21,19 +27,25 @@ namespace WinForm {
         }
 
         private void btnAceptar_Click(object sender, EventArgs e) {
-            Articulo nuevoArticulo = new Articulo();
+            //Articulo nuevoArticulo = new Articulo();
             ArticuloNegocio negocio = new ArticuloNegocio();
 
             try {
-                nuevoArticulo.Codigo = tboxCodigo.Text;
-                nuevoArticulo.Nombre = tboxNombre.Text;
-                nuevoArticulo.Descripcion = tboxDescripcion.Text;
-                nuevoArticulo.ImagenUrl = tboxImagenUrl.Text;
-                nuevoArticulo.Marca = (Marca)cboxMarca.SelectedItem;
-                nuevoArticulo.Categoria = (Categoria)cboxCategoria.SelectedItem;
+                articulo.Codigo = tboxCodigo.Text;
+                articulo.Nombre = tboxNombre.Text;
+                articulo.Descripcion = tboxDescripcion.Text;
+                articulo.ImagenUrl = tboxImagenUrl.Text;
+                articulo.Marca = (Marca)cboxMarca.SelectedItem;
+                articulo.Categoria = (Categoria)cboxCategoria.SelectedItem;
 
-                negocio.agregar(nuevoArticulo);
-                MessageBox.Show("Articulo agregado");
+                if (articulo.Id != 0) {
+                    negocio.modificar(articulo);
+                    MessageBox.Show("Articulo modificado");
+                }
+                else {
+                    negocio.agregar(articulo);
+                    MessageBox.Show("Articulo agregado");
+                }
                 Close();
             }
             catch (Exception ex) {
@@ -47,7 +59,21 @@ namespace WinForm {
 
             try {
                 cboxMarca.DataSource = marcaNegocio.listar();
+                cboxMarca.ValueMember = "Id";
+                cboxMarca.DisplayMember = "Descripcion";
                 cboxCategoria.DataSource = categoriaNegocio.listar();
+                cboxCategoria.ValueMember = "Id";
+                cboxCategoria.DisplayMember = "Descripcion";
+
+                if(articulo != null) {
+                    tboxCodigo.Text = articulo.Codigo;
+                    tboxNombre.Text = articulo.Nombre;
+                    tboxDescripcion.Text = articulo.Descripcion;
+                    tboxImagenUrl.Text = articulo.ImagenUrl;
+                    cargarImagen(articulo.ImagenUrl);
+                    cboxMarca.SelectedValue = articulo.Marca.Id;
+                    cboxCategoria.SelectedValue = articulo.Categoria.Id;
+                }
             }
             catch (Exception ex) {
                 MessageBox.Show(ex.ToString());
