@@ -31,12 +31,16 @@ namespace WinForm {
             ArticuloNegocio negocio = new ArticuloNegocio();
 
             try {
+                if (articulo == null)
+                    articulo = new Articulo();
+
                 articulo.Codigo = tboxCodigo.Text;
                 articulo.Nombre = tboxNombre.Text;
                 articulo.Descripcion = tboxDescripcion.Text;
                 articulo.ImagenUrl = tboxImagenUrl.Text;
                 articulo.Marca = (Marca)cboxMarca.SelectedItem;
                 articulo.Categoria = (Categoria)cboxCategoria.SelectedItem;
+                articulo.Precio = decimal.Parse(tboxPrecio.Text);
 
                 if (articulo.Id != 0) {
                     negocio.modificar(articulo);
@@ -73,6 +77,7 @@ namespace WinForm {
                     cargarImagen(articulo.ImagenUrl);
                     cboxMarca.SelectedValue = articulo.Marca.Id;
                     cboxCategoria.SelectedValue = articulo.Categoria.Id;
+                    tboxPrecio.Text = articulo.Precio.ToString();
                 }
             }
             catch (Exception ex) {

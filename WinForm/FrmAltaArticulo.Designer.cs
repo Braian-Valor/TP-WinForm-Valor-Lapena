@@ -39,13 +39,15 @@ namespace WinForm {
             this.tboxImagenUrl = new System.Windows.Forms.TextBox();
             this.lblImagenUrl = new System.Windows.Forms.Label();
             this.pbxAltaArticulo = new System.Windows.Forms.PictureBox();
+            this.tboxPrecio = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pbxAltaArticulo)).BeginInit();
             this.SuspendLayout();
             // 
             // lblCodigo
             // 
             this.lblCodigo.AutoSize = true;
-            this.lblCodigo.Location = new System.Drawing.Point(67, 19);
+            this.lblCodigo.Location = new System.Drawing.Point(38, 19);
             this.lblCodigo.Name = "lblCodigo";
             this.lblCodigo.Size = new System.Drawing.Size(43, 13);
             this.lblCodigo.TabIndex = 0;
@@ -54,7 +56,7 @@ namespace WinForm {
             // lblNombre
             // 
             this.lblNombre.AutoSize = true;
-            this.lblNombre.Location = new System.Drawing.Point(63, 45);
+            this.lblNombre.Location = new System.Drawing.Point(34, 45);
             this.lblNombre.Name = "lblNombre";
             this.lblNombre.Size = new System.Drawing.Size(47, 13);
             this.lblNombre.TabIndex = 1;
@@ -63,7 +65,7 @@ namespace WinForm {
             // lblDescripcion
             // 
             this.lblDescripcion.AutoSize = true;
-            this.lblDescripcion.Location = new System.Drawing.Point(44, 71);
+            this.lblDescripcion.Location = new System.Drawing.Point(15, 71);
             this.lblDescripcion.Name = "lblDescripcion";
             this.lblDescripcion.Size = new System.Drawing.Size(66, 13);
             this.lblDescripcion.TabIndex = 2;
@@ -71,28 +73,28 @@ namespace WinForm {
             // 
             // tboxCodigo
             // 
-            this.tboxCodigo.Location = new System.Drawing.Point(116, 12);
+            this.tboxCodigo.Location = new System.Drawing.Point(87, 12);
             this.tboxCodigo.Name = "tboxCodigo";
             this.tboxCodigo.Size = new System.Drawing.Size(158, 20);
             this.tboxCodigo.TabIndex = 3;
             // 
             // tboxNombre
             // 
-            this.tboxNombre.Location = new System.Drawing.Point(116, 38);
+            this.tboxNombre.Location = new System.Drawing.Point(87, 38);
             this.tboxNombre.Name = "tboxNombre";
             this.tboxNombre.Size = new System.Drawing.Size(158, 20);
             this.tboxNombre.TabIndex = 4;
             // 
             // tboxDescripcion
             // 
-            this.tboxDescripcion.Location = new System.Drawing.Point(116, 64);
+            this.tboxDescripcion.Location = new System.Drawing.Point(87, 64);
             this.tboxDescripcion.Name = "tboxDescripcion";
             this.tboxDescripcion.Size = new System.Drawing.Size(158, 20);
             this.tboxDescripcion.TabIndex = 5;
             // 
             // btnAceptar
             // 
-            this.btnAceptar.Location = new System.Drawing.Point(116, 193);
+            this.btnAceptar.Location = new System.Drawing.Point(90, 217);
             this.btnAceptar.Name = "btnAceptar";
             this.btnAceptar.Size = new System.Drawing.Size(75, 23);
             this.btnAceptar.TabIndex = 6;
@@ -102,7 +104,7 @@ namespace WinForm {
             // 
             // btnCancelar
             // 
-            this.btnCancelar.Location = new System.Drawing.Point(292, 193);
+            this.btnCancelar.Location = new System.Drawing.Point(266, 217);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(75, 23);
             this.btnCancelar.TabIndex = 7;
@@ -113,7 +115,7 @@ namespace WinForm {
             // lblMarca
             // 
             this.lblMarca.AutoSize = true;
-            this.lblMarca.Location = new System.Drawing.Point(70, 124);
+            this.lblMarca.Location = new System.Drawing.Point(41, 124);
             this.lblMarca.Name = "lblMarca";
             this.lblMarca.Size = new System.Drawing.Size(40, 13);
             this.lblMarca.TabIndex = 8;
@@ -122,7 +124,7 @@ namespace WinForm {
             // lblCategoria
             // 
             this.lblCategoria.AutoSize = true;
-            this.lblCategoria.Location = new System.Drawing.Point(55, 155);
+            this.lblCategoria.Location = new System.Drawing.Point(26, 155);
             this.lblCategoria.Name = "lblCategoria";
             this.lblCategoria.Size = new System.Drawing.Size(55, 13);
             this.lblCategoria.TabIndex = 9;
@@ -132,7 +134,7 @@ namespace WinForm {
             // 
             this.cboxMarca.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboxMarca.FormattingEnabled = true;
-            this.cboxMarca.Location = new System.Drawing.Point(116, 116);
+            this.cboxMarca.Location = new System.Drawing.Point(87, 116);
             this.cboxMarca.Name = "cboxMarca";
             this.cboxMarca.Size = new System.Drawing.Size(161, 21);
             this.cboxMarca.TabIndex = 10;
@@ -141,14 +143,14 @@ namespace WinForm {
             // 
             this.cboxCategoria.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboxCategoria.FormattingEnabled = true;
-            this.cboxCategoria.Location = new System.Drawing.Point(116, 147);
+            this.cboxCategoria.Location = new System.Drawing.Point(87, 147);
             this.cboxCategoria.Name = "cboxCategoria";
             this.cboxCategoria.Size = new System.Drawing.Size(161, 21);
             this.cboxCategoria.TabIndex = 11;
             // 
             // tboxImagenUrl
             // 
-            this.tboxImagenUrl.Location = new System.Drawing.Point(116, 90);
+            this.tboxImagenUrl.Location = new System.Drawing.Point(87, 90);
             this.tboxImagenUrl.Name = "tboxImagenUrl";
             this.tboxImagenUrl.Size = new System.Drawing.Size(158, 20);
             this.tboxImagenUrl.TabIndex = 13;
@@ -157,7 +159,7 @@ namespace WinForm {
             // lblImagenUrl
             // 
             this.lblImagenUrl.AutoSize = true;
-            this.lblImagenUrl.Location = new System.Drawing.Point(49, 97);
+            this.lblImagenUrl.Location = new System.Drawing.Point(20, 97);
             this.lblImagenUrl.Name = "lblImagenUrl";
             this.lblImagenUrl.Size = new System.Drawing.Size(61, 13);
             this.lblImagenUrl.TabIndex = 12;
@@ -165,18 +167,36 @@ namespace WinForm {
             // 
             // pbxAltaArticulo
             // 
-            this.pbxAltaArticulo.Location = new System.Drawing.Point(292, 12);
+            this.pbxAltaArticulo.Location = new System.Drawing.Point(263, 12);
             this.pbxAltaArticulo.Name = "pbxAltaArticulo";
-            this.pbxAltaArticulo.Size = new System.Drawing.Size(171, 156);
+            this.pbxAltaArticulo.Size = new System.Drawing.Size(196, 182);
             this.pbxAltaArticulo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pbxAltaArticulo.TabIndex = 14;
             this.pbxAltaArticulo.TabStop = false;
+            // 
+            // tboxPrecio
+            // 
+            this.tboxPrecio.Location = new System.Drawing.Point(90, 174);
+            this.tboxPrecio.Name = "tboxPrecio";
+            this.tboxPrecio.Size = new System.Drawing.Size(158, 20);
+            this.tboxPrecio.TabIndex = 16;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(41, 181);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(40, 13);
+            this.label1.TabIndex = 15;
+            this.label1.Text = "Precio:";
             // 
             // FrmAltaArticulo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(486, 243);
+            this.ClientSize = new System.Drawing.Size(481, 268);
+            this.Controls.Add(this.tboxPrecio);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.pbxAltaArticulo);
             this.Controls.Add(this.tboxImagenUrl);
             this.Controls.Add(this.lblImagenUrl);
@@ -219,5 +239,7 @@ namespace WinForm {
         private System.Windows.Forms.TextBox tboxImagenUrl;
         private System.Windows.Forms.Label lblImagenUrl;
         private System.Windows.Forms.PictureBox pbxAltaArticulo;
+        private System.Windows.Forms.TextBox tboxPrecio;
+        private System.Windows.Forms.Label label1;
     }
 }
